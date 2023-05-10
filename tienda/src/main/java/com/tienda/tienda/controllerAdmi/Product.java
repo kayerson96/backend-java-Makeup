@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 // este es el mapeo a DB
 @Table(name="product")
-@Entity(name ="medico")
+@Entity(name ="Product")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor

@@ -4,6 +4,7 @@ import com.tienda.tienda.controllerAdmi.repository.ProductRepository;
 import com.tienda.tienda.datos.DatosListadoProduct;
 import com.tienda.tienda.datos.DatosProduct;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class ProductController {
         private ProductRepository productRepository;
         @PostMapping
         @Transactional
-        public void registrarProducto(@RequestBody DatosProduct datosProduct){
+        public void registrarProducto(@Valid @RequestBody DatosProduct datosProduct){
 
             System.out.println("llego correcto");
             productRepository.save(new Product(datosProduct) );
@@ -37,7 +38,7 @@ public class ProductController {
 
 
 
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping
     public List<DatosListadoProduct> obtenerAllProductos(){
         return productRepository.findAll().stream().map(DatosListadoProduct::new).toList();
