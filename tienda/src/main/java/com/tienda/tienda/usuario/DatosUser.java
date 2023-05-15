@@ -17,11 +17,11 @@ public record DatosUser(
         @Email (message = "el campo email no cumple con el criterio")
                 @NotBlank(message = "el campo email es requerido")
         String email,
-        @Pattern(regexp = "\\d{10}", message = ("debe contener 10 digitos"))
-        @NotBlank(message = ("debe contener 10 digitos"))
+        @Pattern(regexp = "\\d{10}", message = "debe contener minimo y maximo 10 digitos")
+        @NotNull
         String phone,
 
-        String phone2,
+        String  phone2,
         Boolean state
 ) {
 }

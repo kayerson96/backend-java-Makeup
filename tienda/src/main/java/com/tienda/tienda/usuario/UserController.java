@@ -2,13 +2,16 @@ package com.tienda.tienda.usuario;
 
 
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@AllArgsConstructor
+@Getter
 @RestController
 @RequestMapping("API/user")
 @Validated
@@ -18,13 +21,17 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @CrossOrigin(origins = "*")
     @PostMapping
     @Transactional
-    public void registrarUser(@Valid @RequestBody DatosUser datosUser) {
+    public void registrarUser(@Validated @RequestBody DatosUser datosUser) {
         System.out.println("llego  los usuarios correcto");
         System.out.println(datosUser);
+        passwordEncoder.encode(datosUser.password());
+        System.out.println(datosUser.password() + "esto es");
         userRepository.save(new User(datosUser));
     }
 

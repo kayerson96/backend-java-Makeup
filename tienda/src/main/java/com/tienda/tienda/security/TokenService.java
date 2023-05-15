@@ -35,6 +35,7 @@ public class TokenService {
     }
 
     public String getSubject(String token) {
+        System.out.println("llego al token");
         if (token == null) {
             throw new RuntimeException();
         }
@@ -55,6 +56,8 @@ public class TokenService {
         return verifier.getSubject();
     }
 
+
+//esto iindica la expiracion del token que seria en 2 horas
     private Instant generarFechaExpiracion() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-05:00"));
     }

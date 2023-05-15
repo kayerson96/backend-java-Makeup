@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collection;
 
@@ -35,11 +38,12 @@ public class User  implements UserDetails {
 
     private String email;
 
-    private String phone;
+    private  String phone;
 
     private String phone2;
 
     private Boolean state;
+
 
     public User(DatosUser datosUser) {
         this.name =datosUser.name();
@@ -53,6 +57,10 @@ public class User  implements UserDetails {
 
 
     }
+
+    public User(String encode) {
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -90,4 +98,6 @@ public class User  implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }
