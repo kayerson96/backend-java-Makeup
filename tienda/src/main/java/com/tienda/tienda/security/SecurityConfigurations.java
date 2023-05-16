@@ -42,7 +42,6 @@ public class SecurityConfigurations {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Le indiamos a Spring el tipo de sesion
                 .and().authorizeRequests()
                  .requestMatchers(HttpMethod.POST  ,"/v1/api/**")
-
                 .permitAll()
                 .requestMatchers(HttpMethod.POST  ,"/v1/api/**")
                 .permitAll()

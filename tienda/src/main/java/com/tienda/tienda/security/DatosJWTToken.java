@@ -1,5 +1,5 @@
 package com.tienda.tienda.security;
 
-public record DatosJWTToken(String jwTtoken) {
+public record DatosJWTToken(String token) {
 }
 
